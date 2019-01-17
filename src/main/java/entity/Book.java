@@ -81,4 +81,10 @@ public class Book {
     public void setGenre(String genre) {
         this.genre = genre;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Book other = (Book) obj;
+        return other.getISBN().equals(this.getISBN());
+    }
 }

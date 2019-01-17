@@ -20,7 +20,7 @@ public class Library implements Serializable {
     @NotNull
     private String address;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "book_library", joinColumns = @JoinColumn(name = "library_id"),
     inverseJoinColumns = @JoinColumn(name = "book_id"))
     private List<Book> booksInLibrary;

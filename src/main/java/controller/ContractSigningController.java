@@ -5,14 +5,11 @@ import entity.Publisher;
 import service.ContractService;
 import service.NamesService;
 
-import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
@@ -44,9 +41,11 @@ public class ContractSigningController implements Serializable {
     }
 
     public void createContractForAuthorAndPublisher(){
-        Author author = namesService.getAuthorWithName(selectedAuthor);
+        //SHOULD USE A CONVERTER FOR JSF INSTEAD OF 2 ACCESSES TO DB, BUT I DON'T KNOW HOW
+        //THIS IS VERY INEFFICIENT
+        Author author = namesService.getAuthorByName(selectedAuthor);
 
-        Publisher publisher = namesService.getPublisherWithName(selectedPublisher);
+        Publisher publisher = namesService.getPublisherByName(selectedPublisher);
 
         if (contractService.createContract(author, publisher)) {
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Contract signed", "Contract signed");

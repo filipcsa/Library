@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:link value="Back" outcome="index"/>
+    <br/>
+    <h:form>
+        <h1>Add book to library</h1>
+        <span style="font-weight: bold;">Select book </span>
+        <h:selectOneMenu value="#{addToLibraryController.selectedBook}">
+            <f:selectItems value="#{addToLibraryController.books}"/>
+        </h:selectOneMenu>
+        <br/>
+        <span style="font-weight: bold;">Select library </span>
+        <h:selectOneMenu value="#{addToLibraryController.selectedLibrary}">
+            <f:selectItems value="#{addToLibraryController.libraries}"/>
+        </h:selectOneMenu>
+        <br/>
+        <br/>
+        <h:panelGrid columns="2">
+            <h:commandButton id="addBook"
+                             action="#{addToLibraryController.addBookToLibrary}"
+                             value="Add Book"/>
+            <h:messages styleClass="messages"
+                        errorClass="invalid" infoClass="valid"
+                        warnClass="warning" globalOnly="true"/>
+        </h:panelGrid>
+    </h:form>
+</f:view>
+</html>

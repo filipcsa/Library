@@ -1,17 +1,27 @@
 package service;
 
 import entity.Author;
+import entity.Book;
+import entity.Library;
 import entity.Publisher;
 
 import java.util.List;
 
 public interface NamesService {
 
-    public List<String> getAuthorNames();
+    List<String> getAuthorNames();
 
-    public List<String> getPublisherNames();
+    List<String> getPublisherNames();
 
-    public Author getAuthorWithName(String name);
+    Author getAuthorByName(String name);
 
-    public Publisher getPublisherWithName(String name);
+    Publisher getPublisherByName(String name);
+
+    List<String> getBookTitles();
+
+    Book getBookByTitle(String title);
+
+    List<String> getLibraryNames();
+
+    Library getLibraryByName(String name);
 }
