@@ -7,10 +7,10 @@ INSERT INTO Publisher ("id", "name", "address") VALUES
 (1, 'Publ', 'Pr'),
 (2, 'Isher', 'Del');
 
-INSERT INTO Book ("id", "title", "publicationdate", "isbn") VALUES
-('1', 'Bible', '06-06-06', '665'),
-('2', 'Koran', '06-06-06', '666'),
-('3', 'Kama Sutra', '01-01-69', '667');
+INSERT INTO Book ("title", "publicationdate", "isbn") VALUES
+('Bible', '06-06-06', '665'),
+('Koran', '06-06-06', '666'),
+('Kama Sutra', '01-01-69', '667');
 
 INSERT INTO Library("id", "name", "address") VALUES
 ('1', 'Kni', 'Ad'),

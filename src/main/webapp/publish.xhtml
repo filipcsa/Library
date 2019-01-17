@@ -6,6 +6,45 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <h:outputLabel value="Hello, world"/>
+    <h:link value="Back" outcome="index"/>
+    <br/>
+    <h:form>
+        <h1>Publish book</h1>
+        <span style="font-weight: bold;">Select author </span>
+        <h:selectOneMenu value="#{publishBookController.selectedAuthor}">
+            <f:selectItems value="#{publishBookController.authors}"/>
+        </h:selectOneMenu>
+
+        <br/>
+        <br/>
+        <span style="font-weight: bold;">Select publisher </span>
+        <h:selectOneMenu value="#{publishBookController.selectedPublisher}">
+            <f:selectItems value="#{publishBookController.publishers}"/>
+        </h:selectOneMenu>
+
+        <h:panelGrid columns="3">
+            <h:outputLabel for="title">Title:</h:outputLabel>
+            <h:inputText id="title" value="#{newBook.title}"/>
+            <h:message for="title" errorClass="invalid"/>
+
+            <h:outputLabel for="isbn">ISBN:</h:outputLabel>
+            <h:inputText id="isbn" value="#{newBook.ISBN}"/>
+            <h:message for="isbn" errorClass="invalid"/>
+
+            <h:outputLabel for="genre">Genre:</h:outputLabel>
+            <h:inputText id="genre" value="#{newBook.genre}"/>
+            <h:message for="genre" errorClass="invalid"/>
+        </h:panelGrid>
+
+        <h:panelGrid columns="2">
+            <h:commandButton id="publish"
+                             action="#{publishBookController.publishBook}"
+                             value="Publish" styleClass="publish"/>
+            <h:messages styleClass="messages"
+                        errorClass="invalid" infoClass="valid"
+                        warnClass="warning" globalOnly="true"/>
+        </h:panelGrid>
+
+    </h:form>
 </f:view>
 </html>

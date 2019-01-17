@@ -18,21 +18,22 @@ public class Book {
 
     private String genre;
 
-    @NotNull
+    @Id
     @Column(unique = true)
     private String ISBN;
 
-    @Id
-    @GeneratedValue
-    private long id;
 
-    /*
     @ManyToMany(mappedBy = "booksInLibrary")
     private List<Library> libraries;
-    */
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "book_id"),
+    inverseJoinColumns = @JoinColumn(name = "author_id"))
     private List<Author> authors;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinTable(name = "book_publisher")
+    private Publisher publisher;
 
     public String getISBN() {
         return ISBN;
@@ -40,14 +41,6 @@ public class Book {
 
     public void setISBN(String ISBN) {
         this.ISBN = ISBN;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -80,6 +73,22 @@ public class Book {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public List<Library> getLibraries() {
+        return libraries;
+    }
+
+    public void setLibraries(List<Library> libraries) {
+        this.libraries = libraries;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     @Override

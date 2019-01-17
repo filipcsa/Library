@@ -20,14 +20,13 @@ public class Publisher implements Serializable{
     @NotNull
     private String address;
 
-    @OneToMany
-    private List<Book> publishedBooks;
 
     //dont't really need it
-    /*
     @ManyToMany(mappedBy = "contracts")
     private List<Author> contracts;
-    */
+
+    @OneToMany(mappedBy = "publisher")
+    private List<Book> publishedBooks;
 
 
     public String getName() {
