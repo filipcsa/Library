@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:link value="Back" outcome="index"/>
+    <br/>
+    <h:form>
+        <h1>Contract of author and publisher</h1>
+        <span style="font-weight: bold;">Select author </span>
+        <h:selectOneMenu value="#{contractSigningController.selectedAuthor}">
+            <f:selectItems value="#{contractSigningController.authors}"/>
+        </h:selectOneMenu>
+
+        <br/>
+        <br/>
+        <span style="font-weight: bold;">Select publisher </span>
+        <h:selectOneMenu value="#{contractSigningController.selectedPublisher}">
+            <f:selectItems value="#{contractSigningController.publishers}"/>
+        </h:selectOneMenu>
+
+        <br/>
+        <br/>
+
+        <h:panelGrid columns="2">
+            <h:commandButton id="createContract"
+                             action="#{contractSigningController.createContractForAuthorAndPublisher}"
+                             value="Create contract"/>
+            <h:messages styleClass="messages"
+                        errorClass="invalid" infoClass="valid"
+                        warnClass="warning" globalOnly="true"/>
+        </h:panelGrid>
+    </h:form>
+
+</f:view>
+</html>
